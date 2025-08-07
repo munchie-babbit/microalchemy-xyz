@@ -1,4 +1,3 @@
-import React from 'react'
 import CircuitBoardAnimation from './components/CircuitBoardAnimation'
 import './App.css'
 
