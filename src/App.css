@@ -1,0 +1,363 @@
+.App {
+  width: 100%;
+  height: 100%;
+}
+
+.circuit-container {
+  width: 100%;
+  height: 100vh;
+  background: #1a5d4a;
+  position: relative;
+  overflow: hidden;
+}
+
+.circuit-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes drawLine {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animated-path {
+  animation: drawLine 1.5s linear forwards;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .circuit-container {
+    height: 100vh;
+    height: 100dvh; /* Use dynamic viewport height for better mobile support */
+  }
+}
+
+@media (max-width: 480px) {
+  .circuit-container {
+    height: 100vh;
+    height: 100dvh;
+  }
+}
+
+/* Text overlay styles */
+.text-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.text-content {
+  border: 3px solid #d4af37;
+  border-radius: 0;
+  padding: 1rem;
+  max-width: 900px;
+  margin: 2rem;
+  pointer-events: auto;
+  background: rgba(15, 47, 37, 0.95);
+}
+
+.text-content-inner {
+  font-family: 'IBM Plex Mono', 'Courier New', 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  background: rgba(15, 47, 37, 0.95);
+  border: 2px solid #d4af37;
+  border-radius: 0;
+  padding: 3rem 4rem;
+  color: #ffffff;
+  text-align: left;
+}
+
+.title {
+  font-family: 'Space Mono', 'IBM Plex Mono', monospace;
+  font-size: 1.75rem;
+  font-weight: 400;
+  color: #d4af37;
+  margin: 0;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  position: relative;
+}
+
+/* Title row container */
+.title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.title-row::after {
+  content: '';
+  position: absolute;
+  bottom: -1rem;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: #d4af37;
+}
+
+.title-row .title {
+  margin: 0;
+}
+
+.description {
+  font-size: 0.9rem;
+  line-height: 1.8;
+  margin: 0 0 2rem 0;
+  color: #ffffff;
+  font-weight: 300;
+}
+
+.expertise {
+  margin: 3rem 0;
+  position: relative;
+}
+
+.expertise::before {
+  content: '';
+  position: absolute;
+  top: -1.5rem;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: #d4af37;
+}
+
+.subtitle {
+  font-family: 'Space Mono', 'IBM Plex Mono', monospace;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #d4af37;
+  margin: 0 0 1.5rem 0;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.expertise-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.expertise-list li {
+  font-size: 0.8rem;
+  line-height: 1.4;
+  color: #ffffff;
+  font-weight: 300;
+  padding: 1rem 1.5rem;
+  position: relative;
+  background: rgba(212, 175, 55, 0.1);
+  border: 1px solid #d4af37;
+  border-radius: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex: 1;
+  min-width: 200px;
+  max-width: 280px;
+}
+
+.expertise-list li:hover {
+  background: rgba(212, 175, 55, 0.2);
+  border-color: #ffffff;
+  color: #d4af37;
+}
+
+.expertise-list li::before {
+  display: none;
+}
+
+.footer {
+  font-size: 0.85rem;
+  margin: 3rem 0 2rem 0;
+  color: #ffffff;
+  font-weight: 300;
+  position: relative;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  top: -1.5rem;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: #d4af37;
+}
+
+.contact {
+  font-size: 0.8rem;
+  margin: 2rem 0 0 0;
+  color: #ffffff;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
+
+.email-link {
+  color: #d4af37;
+  text-decoration: none;
+  font-weight: normal;
+  transition: color 0.2s ease;
+}
+
+.email-link:hover {
+  color: #fff;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .text-content {
+    padding: 0.8rem;
+    margin: 1rem;
+    max-width: 90%;
+  }
+  
+  .text-content-inner {
+    padding: 2rem;
+  }
+  
+  .title-row {
+    margin-bottom: 2rem;
+  }
+  
+  .title {
+    font-family: 'Space Mono', 'IBM Plex Mono', monospace;
+    font-size: 1.4rem;
+  }
+  
+  .subtitle {
+    font-family: 'Space Mono', 'IBM Plex Mono', monospace;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .description {
+    font-size: 0.8rem;
+    margin-bottom: 2rem;
+  }
+  
+  .footer {
+    font-size: 0.75rem;
+    margin: 2rem 0 1.5rem 0;
+  }
+  
+  .contact {
+    font-size: 0.7rem;
+    margin-top: 1.5rem;
+  }
+  
+  .expertise {
+    margin: 2rem 0;
+  }
+  
+  .expertise-list {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  
+  .expertise-list li {
+    font-size: 0.75rem;
+    min-width: auto;
+    max-width: none;
+    flex: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .text-content {
+    padding: 0.6rem;
+    margin: 0.5rem;
+  }
+  
+  .text-content-inner {
+    padding: 1.5rem;
+  }
+  
+  .title-row {
+    margin-bottom: 1.5rem;
+  }
+  
+  .title {
+    font-family: 'Space Mono', 'IBM Plex Mono', monospace;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+  }
+  
+  .subtitle {
+    font-family: 'Space Mono', 'IBM Plex Mono', monospace;
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+  }
+  
+  .description {
+    font-size: 0.75rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+  
+  .footer {
+    font-size: 0.7rem;
+    margin: 1.5rem 0 1rem 0;
+  }
+  
+  .contact {
+    font-size: 0.65rem;
+    margin-top: 1rem;
+  }
+  
+  .expertise {
+    margin: 1.5rem 0;
+  }
+  
+  .expertise-list {
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  
+  .expertise-list li {
+    font-size: 0.65rem;
+    padding: 0.8rem 1rem;
+    min-width: auto;
+    max-width: none;
+    flex: none;
+  }
+}
+
+/* Ensure proper touch handling on mobile */
+@media (hover: none) and (pointer: coarse) {
+  .circuit-container {
+    touch-action: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  .text-content {
+    -webkit-touch-callout: auto;
+    -webkit-user-select: text;
+    -khtml-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+  }
+} 
