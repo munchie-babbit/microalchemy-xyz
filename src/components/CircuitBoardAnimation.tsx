@@ -135,6 +135,12 @@ class Wire {
     circle2.setAttribute('stroke', `#fff`)
     circle1.setAttribute('fill', `#d4af37`)
     circle2.setAttribute('fill', `#d4af37`)
+    
+    // Add initial opacity and animation for dots
+    circle1.setAttribute('opacity', '0')
+    circle2.setAttribute('opacity', '0')
+    circle1.classList.add('animated-dot')
+    circle2.classList.add('animated-dot')
 
     for (let i = 0; i < this.cells.length; i += 1) {
       const cur = this.cells[i]
@@ -142,6 +148,8 @@ class Wire {
         d += `M ${cur.x * s + s / 2} ${cur.y * s + s / 2}`
         circle1.setAttribute('cx', `${cur.x * s + s / 2}`)
         circle1.setAttribute('cy', `${cur.y * s + s / 2}`)
+        // Set transform origin for first circle
+        circle1.style.transformOrigin = `${cur.x * s + s / 2}px ${cur.y * s + s / 2}px`
       }
 
       if (i < this.cells.length)
@@ -150,6 +158,8 @@ class Wire {
       if (i === this.cells.length - 1) {
         circle2.setAttribute('cx', `${cur.x * s + s / 2}`)
         circle2.setAttribute('cy', `${cur.y * s + s / 2}`)
+        // Set transform origin for second circle
+        circle2.style.transformOrigin = `${cur.x * s + s / 2}px ${cur.y * s + s / 2}px`
       }
     }
 
@@ -161,6 +171,9 @@ class Wire {
     path.setAttribute('stroke-dasharray', `${length}, ${length}`)
     path.setAttribute('stroke-dashoffset', `${length}`)
     path.classList.add('animated-path')
+    
+    // Add delay to path drawing
+    path.style.animationDelay = '1.0s'
     
     svgElement.appendChild(path)
     svgElement.appendChild(circle1)
@@ -251,73 +264,73 @@ const CircuitBoardAnimation: React.FC = () => {
           }}
           transition={{ 
             duration: 0.8, 
-            delay: 0.5,
+            delay: 2.5,
             ease: [0.25, 0.25, 0.25, 1]
           }}
         >
           <div className="text-content-inner">
-          <motion.div 
-            className="title-row"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.8 }}
-          >
+                      <motion.div 
+              className="title-row"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 3.0 }}
+            >
             <h1 className="title">Welcome to MicroAlchemy</h1>
             <h1 className="title">// MA</h1>
           </motion.div>
-          <motion.p 
-            className="description"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 1.0 }}
-          >
+                      <motion.p 
+              className="description"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 3.2 }}
+            >
             MicroAlchemy is a company dedicated to providing cutting-edge solutions in the realm of micro-technology and advanced material science. 
           </motion.p>
-          <motion.div 
-            className="expertise"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 1.2 }}
-          >
+                      <motion.div 
+              className="expertise"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 3.4 }}
+            >
             <h2 className="subtitle">Our expertise includes:</h2>
             <ul className="expertise-list">
               <motion.li
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.4, delay: 1.4 }}
+                transition={{ duration: 0.4, delay: 3.6 }}
               >
                 Compilers and analog design synthesis <br/> ✳ ✳ ✳
               </motion.li>
               <motion.li
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.4, delay: 1.5 }}
+                transition={{ duration: 0.4, delay: 3.7 }}
               >
                 Semiconductor device fabrication and design <br/> ❇ ❇ ❇
               </motion.li>
               <motion.li
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.4, delay: 1.6 }}
+                transition={{ duration: 0.4, delay: 3.8 }}
               >
                 Robotics and automation design for low volume manufacturing <br/> ✳ ✳ ✳
               </motion.li>
             </ul>
           </motion.div>
-          <motion.p 
-            className="footer"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 1.7 }}
-          >
-            Stay tuned for more updates and exciting developments!
-          </motion.p>
-          <motion.p 
-            className="contact"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 1.9 }}
-          >
+                      <motion.p 
+              className="footer"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 3.9 }}
+            >
+              Stay tuned for more updates and exciting developments!
+            </motion.p>
+            <motion.p 
+              className="contact"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 4.1 }}
+            >
             Email inquiries to <a href="mailto:info@microalchemy.xyz" className="email-link">info@microalchemy.xyz</a>
           </motion.p>
           </div>
